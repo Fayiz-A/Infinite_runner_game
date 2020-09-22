@@ -18,7 +18,7 @@ function preload() {
   restart_img = loadImage("images/restart.png");
 
   //Loading the animations
-  monkey_running = loadAnimation("images/monkey_01.png", "images/monkey_02.png", "images/monkey_03.png", "images/monkey_04.png", "images/monkey_05.png", "images/monkey_06.png", "images/monkey_07.png", "images/monkey_08.png", "images/monkey_09.png", "images/monkey_10.png");
+  monkey_running = loadAnimation("images/Monkey_01.png", "images/Monkey_02.png", "images/Monkey_03.png", "images/Monkey_04.png", "images/Monkey_05.png", "images/Monkey_06.png", "images/Monkey_07.png", "images/Monkey_08.png", "images/Monkey_09.png", "images/Monkey_10.png");
 
   //Loading the sounds
   jumpSound = loadSound("sounds/jump.mp3");
