@@ -136,14 +136,6 @@ function draw() {
       drawObstacles();
     }
 
-    // if (previousState == "displayRules") {
-    //   //This condition only executes when the user goes in play state for the first time
-    //   frameCount2 = frameCount - framesElapsedInInitialState; //Resets the frameCount
-    // } else if (previousState == "lose") {
-    //   //This condition will execute after the user goes in play state after the lose state
-    //   frameCount2 = frameCount - framesElapsedTillLoseState; //Resets the frameCount
-    // }
-
     if (monkey.y > monkeyY) {
       //Gives the monkey animation when it is on the ground
       monkey.play();
@@ -183,8 +175,6 @@ function draw() {
       }
     }
 
-    // //scene.velocityX = -1 * (6 + 2 * score / 100); //Makes the scene move faster as the score increases
-
     score = score + Math.round(getFrameRate() / 60); //Increases the score
   }
 
@@ -196,7 +186,6 @@ function draw() {
     bananaGroup.setLifetimeEach(-1);
     monkey.pause(); //Stops the animation for the monkey
     restart.visible = true;
-    gameOver.visible = true;
     if (mousePressedOver(restart)) {
       //restarts the game when the user clicks on the restart icon
       reset();
@@ -232,7 +221,6 @@ function drawObstacles() {
   var obstacle = createSprite(displayWidth/2+random(0, 100), displayHeight-210);
   obstacle.addImage(obstacle_img);
   obstacle.scale = 0.2;
-  //obstacle.velocityX = -1 * (6 + 2 * score / 100); //Makes the obstacle move along with the scene
   monkey.depth = obstacle.depth + 1; //Makes the monkey appear over the obstacle
   obstacle.setCollider("circle", 0, 0, 150);
   //obstacle.debug = true;
@@ -245,7 +233,6 @@ function drawBananas() {
   var banana = createSprite(displayWidth/2 - 100, random(displayHeight-250, displayHeight-350));
   banana.addImage(banana_img);
   banana.scale = 0.09;
-  //banana.velocityX = -1 * (6 + 2 * score / 100);
   banana.rotation = random(0, 360); //randomely rotates the banana
   monkey.depth = banana.depth + 1;
   restart.depth = banana.depth + 1; //Makes the restart icon appear over the banana
