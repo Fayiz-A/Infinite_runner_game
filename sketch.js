@@ -49,7 +49,7 @@ function setup() {
   bananaGroup = new Group();
 
   //Creates the restart button
-  restart = createSprite(200, 200, 10, 10);
+  restart = createSprite(displayWidth/2, displayHeight/2, 10, 10);
   restart.addImage(restart_img);
   restart.scale = 0.4;
   restart.visible = false; //makes it invisible as it has to be visible in the lose state only
@@ -87,14 +87,9 @@ function setup() {
     pop();
   }
 
-  // framesElapsedInInitialState = 0;
-  // framesElapsedTillLoseState = 0; //Number of frames elapsed till the game goes in play state after the lose state
-  // frameCount2 = 0; //A variable which is a kind of frameCount that can reset its value to 0
-
   bananasCollected = 0; //variable that stores the number of bananas collected
 
   camera.position.x = 0;
-
 }
 
 function draw() {
@@ -102,7 +97,6 @@ function draw() {
   //Makes the gameState play when user clicks anywhere on the screen
   if (mouseDown() && gameState == "displayRules") {
     //gameState=="displayRules" ensures that this only happens when the user is in dispayRules state and not in the rest of the game
-    framesElapsedInInitialState = frameCount; //This will record the number of frames elapsed when the user goes in play state
     gameState = "play";
   }
 
@@ -113,9 +107,6 @@ function draw() {
   monkey.collide(invisibleGround); //prevents the monkey from falling down
 
   if (gameState == "play") {
-
-    imageMode(CENTER);
-    image(scene_img ,displayWidth/2, displayHeight/2, displayWidth*2, displayHeight);
 
     camera.position.x += 15;
     camera.position.y = displayHeight/2;
@@ -179,7 +170,7 @@ function draw() {
   }
 
   if (gameState == "lose") {
-    //scene.velocityX = 0; //Stops the background from moving
+    print('lose');
     obstacleGroup.setVelocityXEach(0); //Stops the obstacles from moving
     obstacleGroup.setLifetimeEach(-1); //Assigns a negative lifetime to the obstacles (which it will never reach) 
     bananaGroup.setVelocityXEach(0);
@@ -194,6 +185,8 @@ function draw() {
 
   if (gameState != "displayRules") {
     //Information to be displayed while the game is in any other state than displayRules
+    imageMode(CENTER);
+    image(scene_img ,displayWidth/2, displayHeight/2, displayWidth*2, displayHeight);
     drawSprites();
 
     var textX = camera.position.x + 200;
